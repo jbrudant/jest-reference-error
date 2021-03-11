@@ -1,8 +1,11 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { playSoundFile } from "./sound-player";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+const mockPlaySoundFile = jest.fn();
+jest.mock("./sound-player.js", () => {
+  return { playSoundFile: mockPlaySoundFile };
+});
+
+test("only one test is needed", () => {
+  // the component needs to be instantiated to the ReferenceError to be thrown
+  // remove the next line and jest seems happy
 });
